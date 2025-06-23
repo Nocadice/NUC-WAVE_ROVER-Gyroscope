@@ -1,10 +1,9 @@
 import requests
 import threading
-import main
 from Config import cfg
 from IMU_Dir import IMU_Calc_North
 
-PID_Para = [0.0038, 0.0015, -0.003]         #KP KI
+PID_Para = [0.0038, 0.0016, -0.003]         #KP KI
 Err_Hist = [0, 0, 0]                #Pre Last
 Target = 0
 
@@ -24,14 +23,14 @@ def Rover_Move(left_speed, right_speed):
 
 
 def Rover_Stop():
-    if main.Stop_flag == 1:
+    if cfg.Stop_flag == 1:
         command = cfg.command_List['STOP']
         url = "http://" + cfg.ip_addr + "/js?json=" + command
         requests.get(url)
 
 
 def Dir_PI_Timer_Create():
-    if main.Stop_flag == 0:
+    if cfg.Stop_flag == 0:
         t = threading.Timer(0.3, Dir_PI)
         t.start()
 

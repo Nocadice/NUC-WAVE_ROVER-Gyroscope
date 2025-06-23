@@ -2,7 +2,6 @@ import requests
 import json
 import threading
 
-import main
 from Config import cfg
 from Motor import Driver
 
@@ -46,7 +45,7 @@ def MAG_self_check():
 
 
 def IMU_data_get_Timer_create():
-    if main.Stop_flag == 0:
+    if cfg.Stop_flag == 0:
         t = threading.Timer(0.2, IMU_DATA_GET)
         t.start()
 
@@ -70,5 +69,4 @@ def IMU_DATA_GET():
     print("NS_Polar: ", end='')
     print(north_y)                 #dev
     IMU_data_get_Timer_create()
-
 
