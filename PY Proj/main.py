@@ -5,25 +5,32 @@
 # !/usr/bin/python
 # -*- coding: UTF-8 -*-
 import keyboard
+from Config import cfg
 from IMU_Dir import IMU_Calc_North
 from Motor import Driver
 
 
+global Stop_flag
+Stop_flag = 0
+
+
 def keyboard_callback(event):
+    global Stop_flag
     if event.name == 'e':
-        Driver.Rover_Move(0, 0)
+        Stop_flag = 1
+        Driver.Rover_Stop()
         print("Emergency Stop!")
 
 
 def main():
     keyboard.on_press(keyboard_callback)
-    IMU_Calc_North.IMU_data_get_Timer_create()
-    IMU_Calc_North.Dir_PI_Timer_Create()
+    IMU_Calc_North.IMU_DATA_GET()
+    Driver.Dir_PI()
 
 
 if __name__ == "__main__":
     IMU_Calc_North.MAG_self_check_Timer_create()
     while True:
-        if IMU_Calc_North.self_check_time >= 10:
+        if IMU_Calc_North.self_check_time >= cfg.SELF_CHECK_TIME:
             main()
             break
