@@ -5,8 +5,11 @@ import threading
 from Config import cfg
 from Motor import Driver
 
+global gamaX
+global gamaY
 global north_x
 global north_y
+
 
 self_check_time = 0
 noise_xma = 0
@@ -34,13 +37,15 @@ def MAG_self_check():
     command = cfg.command_List['IMU_DATA_GET']
     url = "http://" + cfg.ip_addr + "/js?json=" + command
     IMU_data = json.loads(requests.get(url).text)
+    cfg.Noise_cx.append(IMU_data['mx'])
+    cfg.Noise_cy.append(IMU_data['my'])
     noise_xma = max(IMU_data['mx'], noise_xma)
     noise_yma = max(IMU_data['my'], noise_yma)
     noise_xmi = min(IMU_data['mx'], noise_xmi)
     noise_ymi = min(IMU_data['my'], noise_ymi)
     print("IMU_Check:", end='')                                  #dev
     print(self_check_time)                                       #dev
-    Driver.Rover_Move(0.2, -0.2)
+    Driver.Rover_Move(0.15, -0.15)
     MAG_self_check_Timer_create()
 
 
@@ -57,6 +62,9 @@ def IMU_DATA_GET():
 
     mag_x = IMU_data['mx']
     mag_y = IMU_data['my']
+
+    global gamaX
+    global gamaY
 
     gamaX = (noise_xma - noise_xmi) / 2
     gamaY = (noise_yma - noise_ymi) / 2

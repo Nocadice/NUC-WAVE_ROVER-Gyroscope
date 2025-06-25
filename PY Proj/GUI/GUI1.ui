@@ -27,7 +27,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>630</x>
       <y>250</y>
       <width>61</width>
       <height>61</height>
@@ -40,7 +40,7 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>540</x>
+      <x>550</x>
       <y>330</y>
       <width>61</width>
       <height>61</height>
@@ -53,7 +53,7 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>710</x>
       <y>330</y>
       <width>61</width>
       <height>61</height>
@@ -66,7 +66,7 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>630</x>
       <y>410</y>
       <width>61</width>
       <height>61</height>
@@ -79,7 +79,7 @@
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>630</x>
       <y>330</y>
       <width>61</width>
       <height>61</height>
@@ -92,23 +92,23 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>430</y>
-      <width>91</width>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>NS Polar Graph</string>
+     <string>Polar Noise</string>
     </property>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
       <x>520</x>
       <y>20</y>
-      <width>261</width>
-      <height>192</height>
+      <width>271</width>
+      <height>181</height>
      </rect>
     </property>
    </widget>
