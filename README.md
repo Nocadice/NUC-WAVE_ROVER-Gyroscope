@@ -2,7 +2,7 @@
 NUC Engineering Training
 <br>
 <br>
-ENV Needs:
+Requirements:
 <br>
 keyboard
 <br>
